@@ -125,7 +125,7 @@ function ChildDashboard() {
   ];
   const addProgress = (delta: number) => {
     setProgress((p) => Math.min(p + delta, 100));
-    setEvents((prev) => [{ skillId: currentLesson.skillId, success: true, speed: 'steady', attempts: 1 }, ...prev].slice(0, 8));
+    setEvents((prev) => [{ skillId: currentLesson.skillId, success: true, speed: 'steady' as const, attempts: 1 }, ...prev].slice(0, 8));
   };
 
   return (

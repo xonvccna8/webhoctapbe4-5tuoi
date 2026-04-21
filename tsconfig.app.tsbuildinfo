@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/counter.ts","./src/main.ts","./src/data/mockdata.ts","./src/types/index.ts"],"errors":true,"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/counter.ts","./src/main.tsx","./src/types.ts","./src/data/mockdata.ts","./src/hooks/useprogress.ts","./src/services/personalization.ts","./src/types/index.ts"],"version":"5.9.3"}
