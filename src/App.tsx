@@ -42,41 +42,64 @@ function ChildBadge({ profile }: { profile: (typeof childProfiles)[number] }) {
 
 function HomePage() {
   return (
-    <div className="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
+    <div className="relative mx-auto max-w-7xl overflow-hidden p-4 md:p-6 lg:p-8">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-8%] top-10 h-72 w-72 rounded-full bg-fuchsia-300/30 blur-3xl" />
+        <div className="absolute right-[-6%] top-36 h-80 w-80 rounded-full bg-cyan-300/30 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
+      </div>
       <div className="grid gap-6 xl:grid-cols-[1.35fr_0.9fr]">
-        <Card className="overflow-hidden bg-[linear-gradient(135deg,#fbf7ff_0%,#f1f7ff_48%,#fff5ea_100%)] p-6 md:p-8">
+        <Card className="overflow-hidden border-white/80 bg-[linear-gradient(135deg,#fff7fd_0%,#f3f7ff_45%,#fff6e7_100%)] p-6 md:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-4">
               <Badge>Phiêu lưu Toán học mầm non</Badge>
-              <h1 className="text-4xl font-black tracking-tight md:text-6xl">Học Toán bằng hình ảnh cho bé 4–5 tuổi</h1>
+              <h1 className="text-4xl font-black tracking-tight text-slate-900 md:text-6xl">Học Toán bằng hình ảnh cho bé 4–5 tuổi</h1>
               <p className="max-w-xl text-base text-slate-600 md:text-lg">
                 Thiết kế riêng cho trẻ chưa đọc tốt: chạm, kéo, nghe, nhìn và được khích lệ nhẹ nhàng bằng tiếng Việt.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/child" className="rounded-full bg-brand-500 px-5 py-3 font-semibold text-white shadow-soft">
+                <Link to="/child" className="rounded-full bg-gradient-to-r from-brand-500 to-fuchsia-500 px-5 py-3 font-semibold text-white shadow-soft transition hover:scale-[1.02]">
                   Bắt đầu ngay
                 </Link>
-                <Link to="/parent" className="rounded-full bg-white px-5 py-3 font-semibold text-slate-700 ring-1 ring-slate-200">
+                <Link to="/parent" className="rounded-full bg-white px-5 py-3 font-semibold text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-50">
                   Xem góc phụ huynh
                 </Link>
               </div>
             </div>
-            <motion.div animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }} className="text-8xl md:text-[8rem]">
+            <motion.div animate={{ y: [0, -12, 0], rotate: [0, 6, 0], scale: [1, 1.05, 1] }} transition={{ duration: 4.5, repeat: Infinity }} className="text-8xl md:text-[8rem]">
               🐰
             </motion.div>
           </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {[
+              ['Học vui', 'Mỗi bài ngắn, nhiều hình ảnh'],
+              ['Tương tác', 'Chạm, chọn, kéo và phản hồi ngay'],
+              ['Dịu nhẹ', 'Thân thiện cho bé 4–5 tuổi'],
+            ].map(([title, detail]) => (
+              <div key={title} className="rounded-3xl bg-white/80 p-4 shadow-sm ring-1 ring-white/80">
+                <div className="font-bold text-slate-900">{title}</div>
+                <div className="mt-1 text-sm text-slate-500">{detail}</div>
+              </div>
+            ))}
+          </div>
         </Card>
         <div className="grid gap-4">
-          <Card className="p-5"><div className="flex items-center gap-3"><Sparkles className="text-brand-500" /><div><div className="font-bold">6 thế giới chủ đề</div><div className="text-sm text-slate-500">Đếm, so sánh, hình khối, cộng trừ trong 10</div></div></div></Card>
-          <Card className="p-5"><div className="flex items-center gap-3"><Heart className="text-rose-500" /><div><div className="font-bold">Khuyến khích không áp lực</div><div className="text-sm text-slate-500">Luôn có nhịp học ngắn, vui và an toàn</div></div></div></Card>
-          <Card className="p-5"><div className="flex items-center gap-3"><Mic className="text-emerald-500" /><div><div className="font-bold">Giọng kể thân thiện</div><div className="text-sm text-slate-500">Thiết kế cho tương tác nghe-nhìn thay vì chữ</div></div></div></Card>
+          <Card className="border-white/80 bg-gradient-to-br from-white to-fuchsia-50 p-5"><div className="flex items-center gap-3"><Sparkles className="text-fuchsia-500" /><div><div className="font-bold">6 thế giới chủ đề</div><div className="text-sm text-slate-500">Đếm, so sánh, hình khối, cộng trừ trong 10</div></div></div></Card>
+          <Card className="border-white/80 bg-gradient-to-br from-white to-rose-50 p-5"><div className="flex items-center gap-3"><Heart className="text-rose-500" /><div><div className="font-bold">Khuyến khích không áp lực</div><div className="text-sm text-slate-500">Luôn có nhịp học ngắn, vui và an toàn</div></div></div></Card>
+          <Card className="border-white/80 bg-gradient-to-br from-white to-emerald-50 p-5"><div className="flex items-center gap-3"><Mic className="text-emerald-500" /><div><div className="font-bold">Giọng kể thân thiện</div><div className="text-sm text-slate-500">Thiết kế cho tương tác nghe-nhìn thay vì chữ</div></div></div></Card>
         </div>
       </div>
       <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {worlds.map((w) => (
-          <Card key={w.id} className="p-5">
-            <div className="text-2xl font-black">{w.nameVi}</div>
+          <Card key={w.id} className="overflow-hidden p-5 transition hover:-translate-y-1">
+            <div className="h-2 rounded-full" style={{ background: `linear-gradient(90deg, ${w.palette[0]}, ${w.palette[1]})` }} />
+            <div className="mt-4 text-2xl font-black text-slate-900">{w.nameVi}</div>
             <div className="mt-2 text-sm text-slate-600">{w.descriptionVi}</div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {w.lessonIds.slice(0, 3).map((lessonId) => (
+                <span key={lessonId} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">{lessonId}</span>
+              ))}
+            </div>
           </Card>
         ))}
       </div>
@@ -87,16 +110,16 @@ function HomePage() {
 function ChildHub() {
   return (
     <div className="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
-      <Card className="p-5 md:p-6">
+      <Card className="border-white/80 bg-gradient-to-br from-white to-sky-50 p-5 md:p-6">
         <div className="flex items-center justify-between">
           <SectionTitle title="Chọn bé" subtitle="Hồ sơ demo có lưu trạng thái bằng localStorage" />
-          <Link to="/parent" className="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold">Phụ huynh</Link>
+          <Link to="/parent" className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-200">Phụ huynh</Link>
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {childProfiles.map((c) => (
-            <Link key={c.id} to={`/child/${c.id}`} className="rounded-[28px] bg-white p-6 shadow-soft ring-1 ring-white transition hover:-translate-y-1">
-              <div className="flex items-start justify-between"><div className="text-6xl">{c.avatar}</div><ChildBadge profile={c} /></div>
-              <div className="mt-4 text-2xl font-black">{c.name}</div>
+            <Link key={c.id} to={`/child/${c.id}`} className="rounded-[28px] border border-white/70 bg-gradient-to-br from-white to-slate-50 p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-xl">
+              <div className="flex items-start justify-between"><div className="text-6xl drop-shadow-sm">{c.avatar}</div><ChildBadge profile={c} /></div>
+              <div className="mt-4 text-2xl font-black text-slate-900">{c.name}</div>
               <div className="text-sm text-slate-500">{c.age} tuổi · thích {c.favoriteTheme}</div>
             </Link>
           ))}
@@ -131,7 +154,7 @@ function ChildDashboard() {
   return (
     <div className="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card className="overflow-hidden p-6 md:p-8">
+        <Card className="overflow-hidden border-white/80 bg-gradient-to-br from-white to-fuchsia-50 p-6 md:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <Badge>Chào {child.name}</Badge>
@@ -179,7 +202,7 @@ function ChildDashboard() {
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="border-white/80 bg-gradient-to-br from-white to-emerald-50 p-6">
           <SectionTitle title="Phần thưởng của bé" subtitle="Khơi gợi động lực bằng sưu tập sticker" />
           <div className="mt-5 space-y-4">
             {rewards.map((r) => (
